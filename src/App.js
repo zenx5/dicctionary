@@ -71,8 +71,8 @@ function App() {
         {(!loading && error ) && (error)}
         {(!loading && !error && result.length>0 ) && (
           <div>
-            {result.map( element => (
-              <ResultItem key={element.word+Math.random()} word={element.word}>
+            {result.map( (element, indexResult ) => (
+              <ResultItem key={indexResult} index={indexResult+1} word={element.word}>
                 {element.meanings.map((meaning, index) =>(
                     <MeaningItem 
                         key={Math.random()}

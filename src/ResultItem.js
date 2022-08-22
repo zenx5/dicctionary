@@ -1,9 +1,9 @@
 
 
-export default function ResultItem({word, children}){
+export default function ResultItem({index, word, children}){
     return(
         <span>
-            <b>{word}:</b><br/>
+            <b>{index}) {word}:</b><br/>
             <ul>{children}</ul>
         </span>
     )
