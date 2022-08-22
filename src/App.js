@@ -27,18 +27,18 @@ function App() {
     const targetWord = word?.type ? value  : word
     setLoading( prevLoading => true)
     try{
-      if( targetWord.length === 0 ) throw "Not work"
+      if( targetWord?.length === 0 ) throw new Error("Not work")
       const data = await getWord( targetWord )
       console.log(data)
       if( data?.title === "No Definitions Found" ){
         setResult( prevResult => ([]))
-        throw data.title;
+        throw new Error( data.title );
       }else{
         setResult( prevResult => (data))
         setError(prevError => (false))
       }    
     }catch( error ){
-      setError(prevError => (error))
+      setError(prevError => (error.message))
     }finally{
       setLoading( prevLoading => false)
     }

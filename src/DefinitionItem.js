@@ -1,10 +1,6 @@
-import { useState } from "react";
 import WordSpan from "./WordSpan";
 
 export default function DefinitionItem({definition, example, onClick}){
-    
-    const [fontWeight, setFontWeight] = useState(300);
-
     const styleLine = {
         display:'flex',
         flexWrap:'wrap'
