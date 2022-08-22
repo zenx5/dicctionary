@@ -29,7 +29,6 @@ function App() {
     try{
       if( targetWord?.length === 0 ) throw new Error("Not work")
       const data = await getWord( targetWord )
-      console.log(data)
       if( data?.title === "No Definitions Found" ){
         setResult( prevResult => ([]))
         throw new Error( data.title );
