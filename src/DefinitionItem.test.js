@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import DefinitionItem from './DefinitionItem'
 
 const clicking = (event) => {
-    console.log(event)
+    expect(event).toBe("group")
 }
 
 beforeEach( () => {
