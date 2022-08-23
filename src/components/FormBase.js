@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function FormBase({disabled, onSearch, children}) {
 
     const style = {
@@ -9,7 +11,12 @@ export default function FormBase({disabled, onSearch, children}) {
         marginRight:'auto'
     };
 
-    return (<form data-testid="id-test-form" style={style} onSubmit={ev=>{ev.preventDefault();onSearch(ev);}}>
+    const submitEvent = async (ev) => {
+        ev.preventDefault();
+        await onSearch(ev);
+    }
+
+    return (<form data-testid="id-test-form" style={style} onSubmit={submitEvent}>
         {children}
         <button type="button" onClick={onSearch} disabled={disabled}>Search</button>
     </form>)
