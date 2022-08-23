@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import DefinitionItem from './DefinitionItem'
+import { DefinitionItem } from '../components'
 
 const clicking = (event) => {
     expect(event).toBe("group")

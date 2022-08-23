@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import App from './App';
-import { getWord } from './ApiRequest'
+import App from '../App';
+import { getWord } from '../ApiRequest'
 
-jest.mock('./ApiRequest')
+jest.mock('../ApiRequest')
 
 beforeEach(()=>{
   render(<App />)

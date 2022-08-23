@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Title from './Title';
+import { Title } from '../components';
 
 test("Shold render title h1", () => {
     render(<Title tag='h1'>Titulo</Title>)

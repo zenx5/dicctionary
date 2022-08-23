@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MeaningItem from './MeaningItem'
+import { MeaningItem }from '../components'
 
 beforeEach( () => {
     render(

@@ -1,12 +1,9 @@
 import {useState} from 'react'
 import { getWord } from './ApiRequest'
-import DefinitionItem from './DefinitionItem'
-import FormBase from './FormBase'
-import MeaningItem from './MeaningItem'
-import ResultItem from './ResultItem'
+import {DefinitionItem, FormBase, MeaningItem, ResultItem, Title } from './components'
 import {appStyle} from './style'
 
-import Title from './Title'
+
 
 function App() {
 
