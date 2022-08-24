@@ -34,7 +34,7 @@ const testHelloMeaning = async () => {
 }
 
 test('should title exists', () => {
-  const title = screen.getByText(/Dicctionary/i);
+  const title = screen.getByText(/Dictionary/i);
   expect(title).toBeInTheDocument();
 });
 
