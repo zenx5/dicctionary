@@ -55,11 +55,16 @@ function App() {
     }
   }
 
+  const styleInput = {
+    padding: '8px',
+    paddingLeft: '15px'
+  }
+
   return (
     <div className="App" style={appStyle}>
       <Title tag="h1">Dicctionary</Title>
       <FormBase onSearch={search} disabled={loading}>
-        <input type="text" placeholder='Insert Word' value={value} onChange={changeWord}/>
+        <input type="text" style={styleInput} placeholder='Insert Word' value={value} onChange={changeWord}/>
       </FormBase>
 
       <div style={{display:'flex',margin:'50px', justifyContent:'space-around'}}>
