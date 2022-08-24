@@ -1,13 +1,29 @@
+import { useNavigate } from "react-router-dom"
+import { ButtonStyled } from "../components"
 
+export default function Configure({children}){
+    const navigate = useNavigate()  
 
-export default function Configure(){
+    const saveEvent = () => {
+
+    }
+
+    const exitEvent = () => {
+        navigate('/', {replace:true})
+    }
+    
+    
 
     return(
-        <ul>
-            <li>item 1</li>
-            <li>item 2</li>
-            <li>item 3</li>
-        </ul>
+        <div>
+            <ul>
+                {children}
+            </ul>
+            <div style={{display:'flex', justifyContent:'space-around'}}>
+                {/* <ButtonStyled color="green" onClick={saveEvent}>Save</ButtonStyled> */}
+                <ButtonStyled color="red" onClick={exitEvent}>Exit</ButtonStyled>                
+            </div>
+        </div>
     )
 
 

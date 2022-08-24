@@ -3,7 +3,7 @@ import { MeaningItem }from '../components'
 
 beforeEach( () => {
     render(
-    <MeaningItem word='Word' phonetic="/worssd/">
+    <MeaningItem typeword='Word' phonetic="/worssd/">
         <li>Item 1</li>
         <li>Item 2</li>
     </MeaningItem>)

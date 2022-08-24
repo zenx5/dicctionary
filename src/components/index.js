@@ -5,6 +5,8 @@ import PhoneticWord from './PhoneticWord'
 import ResultItem from './ResultItem'
 import Title from './Title'
 import WordSpan from './WordSpan'
+import ButtonStyled from './ButtonStyled'
+import SettingItem from './SettingItem'
 
 export {
     DefinitionItem,
@@ -13,5 +15,7 @@ export {
     PhoneticWord,
     ResultItem,
     Title,
-    WordSpan
+    WordSpan,
+    ButtonStyled,
+    SettingItem
 }

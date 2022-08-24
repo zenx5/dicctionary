@@ -1,16 +1,23 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { getWord } from '../ApiRequest'
-import {DefinitionItem, FormBase, MeaningItem, ResultItem, Title } from '../components'
-import {appStyle} from '../style'
+import { DefinitionItem, FormBase, MeaningItem, ResultItem, Title } from '../components'
+import { appStyle } from '../style'
+import { NavLink } from 'react-router-dom'
 
 
-
-export default function Dictionary() {
+export default function Dictionary({settings}) {
 
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState([])
   const [error, setError] = useState(false)
   const [value, setValue] = useState('')
+
+  const showEnum = settings.filter(setting=>(setting.name==='show_enum'))[0].value
+  const showType = settings.filter(setting=>(setting.name==='show_type'))[0].value
+  const showPron = settings.filter(setting=>(setting.name==='show_pron'))[0].value
+  const showPlay = settings.filter(setting=>(setting.name==='enab_play'))[0].value
+  const showExam = settings.filter(setting=>(setting.name==='show_exam'))[0].value
+
 
   const getPhonetic = ({phonetic, phonetics}, index) => {
     if(phonetics?.length>0){
@@ -62,28 +69,29 @@ export default function Dictionary() {
 
   return (
     <div className="App" style={appStyle}>
-      <Title tag="h1">Dictionary</Title>
-      <FormBase onSearch={search} disabled={loading}>
-        <input type="text" style={styleInput} placeholder='Insert Word' value={value} onChange={changeWord}/>
-      </FormBase>
-
-      <div style={{display:'flex',margin:'50px', justifyContent:'space-around'}}>
+      <div style={{position:'fixed', backgroundColor:'white', top:'0', height:'200px', boxShadow:'0px 0px 10px lightgray', width:'100vw', left:0}}>
+        <Title tag="h1">Dictionary</Title>
+        <FormBase onSearch={search} disabled={loading}>
+          <input type="text" style={styleInput} placeholder='Insert Word' value={value} onChange={changeWord}/>
+        </FormBase>
+      </div>
+      <div style={{display:'flex',margin:'50px', justifyContent:'space-around', marginTop:'220px'}}>
         {loading && <i>loading...</i>}
         {(!loading && error ) && (error)}
         {(!loading && !error && result.length>0 ) && (
           <div>
             {result.map( (element, indexResult ) => (
-              <ResultItem key={indexResult} index={indexResult+1} word={element.word}>
+              <ResultItem key={indexResult} index={ showEnum ? indexResult+1 : null } word={element.word}>
                 {element.meanings.map((meaning, index) =>(
                     <MeaningItem 
                         key={Math.random()}
-                        word={meaning.partOfSpeech}
-                        phonetic={getPhonetic(element, index)}>
+                        typeword={ showType ? meaning.partOfSpeech : null }
+                        phonetic={ showPron ? ( showPlay ? getPhonetic(element, index) : getPhonetic(element, index)[0] ) : null }>
                         {meaning.definitions.map(definition => (
                           <DefinitionItem 
                               key={Math.random()+'_'+Math.random()} 
                               definition={definition.definition} 
-                              example={definition.example} 
+                              example={ showExam ? definition.example : '' } 
                               onClick={clickWord}/>
                         ))}
                     </MeaningItem>
@@ -92,6 +100,11 @@ export default function Dictionary() {
             ))} 
           </div>    
         )}
+      </div>
+      <div style={{position:'fixed', backgroundColor:'white', bottom:'0', boxShadow:'0px 0px 10px lightgray', width:'100vw', left:0}}>
+        <ul style={{width:'80vw', marginLeft:'auto', marginRight:'auto', listStyle:'none'}}>
+          <li><NavLink to="/configure">Configure</NavLink></li>
+        </ul>
       </div>
     </div>
   );
