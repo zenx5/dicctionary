@@ -47,7 +47,7 @@ import { SettingItem } from './components'
   return(
     <BrowserRouter>
       <Routes>
-        <Route path="/"
+        <Route path="/dictionary"
            element={
             <Dictionary settings={settings}>
             </Dictionary>} />
