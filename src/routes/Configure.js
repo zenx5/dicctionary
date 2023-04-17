@@ -9,7 +9,7 @@ export default function Configure({children}){
     }
 
     const exitEvent = () => {
-        navigate('/', {replace:true})
+        navigate('/dictionary', {replace:true})
     }
     
     
